@@ -1,6 +1,4 @@
-﻿
-int card = Random.Shared.Next(52);
-int you = Random.Shared.Next(10);
+﻿int you = Random.Shared.Next(10);
 int bosse = Random.Shared.Next(10);
 int bosseHP = 100;
 int youHP = 100;
@@ -8,78 +6,93 @@ int idk = 0;
 int round = 1;
 
 
-Console.WriteLine("Skriv in ditt namn här:");
+Console.WriteLine("Write your name here:");
 
 string name = Console.ReadLine();
 Console.WriteLine("");
 
 while (name.Length < 3)
 {
-    Console.WriteLine("Skriv in ditt namn för fan din pungråtta!");
+    Console.WriteLine("Write your name moron!");
     name = Console.ReadLine();
     Console.WriteLine("");
-    idk++;
+    idk ++;
 }
 
 Console.WriteLine("");
 if (idk + 1 < 2)
 {
-    Console.WriteLine($"Hej {name}");
+    Console.WriteLine($"Hello {name}");
 }
 else if (idk + 1 > 1 && idk + 1 < 2)
 {
-    Console.WriteLine($"Hej {name}, kan du inte skriva?");
+    Console.WriteLine($"I swear to god {name}, can't you write?");
 }
 else if (idk + 1 > 3 && idk + 1 < 4)
 {
-    Console.WriteLine($"Seriöst, {name}, du är inte rolig, skriv ditt jäkla namn!");
+    Console.WriteLine($"My brother in jesus, {name}, write your damn name!");
 }
 else if (idk + 1 > 5)
 {
-    Console.WriteLine($"Asså gå tillbaka till skolan {name}!");
+    Console.WriteLine($"Go back to fucking school {name}!");
 }
 
 Console.WriteLine("");
-Console.WriteLine($"Det tog {idk+1} gånger, {idk} för många");
+Console.WriteLine($"It took {idk + 1} times, {idk} too many");
 
 Console.WriteLine("");
-Console.WriteLine("Du ska möta Bosse the CP! Han är stark (ouch)");
+Console.WriteLine("You'll face the infomous 'Bosse the CP', a KD of 104:0, good luck!");
 
-bosseHP = bosseHP;
-youHP = youHP;
+Console.WriteLine("How much money do you want to bet?");
+string m = Console.ReadLine();
+int money = 0;
+int.TryParse(m, out money);
+Console.WriteLine("");
 
-while (youHP > 0 || bosseHP > 0)
+Console.WriteLine("You both start with 100HP each, are you ready?");
+if (Console.ReadLine().ToLower() == "yes")
 {
-    Console.WriteLine($"Round {round}:");
-    Console.WriteLine("How will you attack your opponent?");
-    Console.WriteLine("A. Kick     B. Bonk     C. Bite"); string youM = Console.ReadLine();
-    if (youM.ToLower() == "a" || youM.ToLower() == "b" || youM.ToLower() == "c")
-    {
-        bosseHP = bosseHP - Random.Shared.Next(10);
-        youHP = youHP - Random.Shared.Next(10);
-        round ++;
-        Console.WriteLine($"Your opponent has {bosseHP} HP left!");
-        Console.WriteLine($"You have {youHP} HP left!");
-    }
-    else
-    {
-        Console.WriteLine("Attack them! Let's redo it, go for the finishing move!");
-    }
-
-    if (bosseHP > 0 && youHP <= 0)
-    {
-        Console.WriteLine($"{name} has gotten ultrakilled!");
-    }
-    else if (youHP > 0 && bosseHP <= 0)
-    {
-        Console.WriteLine("Bosse the CP has gotten ultrakilled!");
-    }
-    else if (youHP <= 0 && bosseHP <= 0)
-    {
-        Console.WriteLine("Both have gotten ultrakilled!");
-    }
-
     Console.WriteLine("");
+    while (youHP > 0 && bosseHP > 0)
+    {
+        Console.WriteLine($"Round {round}:");
+        Console.WriteLine("How will you attack your opponent?");
+        Console.WriteLine("A. Kick     B. Bonk     C. Bite"); string youM = Console.ReadLine();
+        if (youM.ToLower() == "a" || youM.ToLower() == "b" || youM.ToLower() == "c")
+        {
+            Console.WriteLine("");
+            bosseHP = bosseHP - Random.Shared.Next(10);
+            youHP = youHP - Random.Shared.Next(10);
+            round ++;
+            Console.WriteLine($"Your opponent has {bosseHP} HP left!");
+            Console.WriteLine($"You have {youHP} HP left!");
+            Console.WriteLine("");
+        }
+        else
+        {
+            Console.WriteLine("Attack them! Let's redo it, go for the finishing move!");
+        }
+
+        if (bosseHP > 0 && youHP <= 0)
+        {
+            money -= 100;
+            Console.WriteLine($"{name} has gotten ultrakilled!");
+            Console.WriteLine($"{name} has gotten skill issued!");
+            Console.WriteLine($"{name} has ${money} left.");
+        }
+        else if (youHP > 0 && bosseHP <= 0)
+        {
+            Console.WriteLine("Bosse the CP has gotten ultrakilled!");
+            Console.WriteLine("Bosse the CP has gotten skill issued!");
+        }
+        else if (youHP <= 0 && bosseHP <= 0)
+        {
+            Console.WriteLine("Both have gotten ultrakilled!");
+            Console.WriteLine("Both have gotten skill issued!");
+        }
+    }
 }
+
+
 
 Console.ReadLine();
